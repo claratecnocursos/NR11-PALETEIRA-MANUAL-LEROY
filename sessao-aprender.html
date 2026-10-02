@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <title>NR-11 — Operação de Paleteira Manual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="question-screen.css?v=leroy-redyellow8">
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; }
+  </style>
+  <script>
+    (function () {
+      try { if (localStorage.getItem('nr01-dark') === '1') document.documentElement.classList.add('qs-dark'); }
+      catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div class="qs-app" id="app">
+    <!-- Capa (igual à referência) -->
+    <section class="qs-home" id="home" aria-label="Abertura do treinamento">
+      <div class="qs-home-photo" aria-hidden="true">
+        <img class="qs-home-photo-img" id="homePhotoImg" src="assets/fotos/capa.png" alt="">
+        <div class="qs-home-veil"></div>
+      </div>
+      <div class="qs-home-inner">
+        <div class="qs-home-card">
+          <div class="qs-home-tag">SEGURANÇA DO TRABALHO</div>
+          <h1><em>NR-11</em> —<br>Operação de Paleteira Manual</h1>
+          <p>Norma, habilitação, condução segura, cargas, EPIs e emergência</p>
+          <div class="qs-home-badges">
+            <div class="qs-home-badge">
+              <div>
+                <strong>4 Módulos</strong>
+                <span>Completos</span>
+              </div>
+            </div>
+            <div class="qs-home-badge">
+              <div>
+                <strong>Treinamento</strong>
+                <span>100% online</span>
+              </div>
+            </div>
+          </div>
+          <div class="qs-home-actions">
+            <button type="button" class="qs-home-start" id="btnStartHome">
+              <span>INICIAR O TREINAMENTO</span>
+            </button>
+            <button type="button" class="qs-home-tutorial" id="btnTutorialHome">
+              <span>▶ Ver tutorial</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="qs-home-logo">
+        <img src="assets/fotos/LOGO.png" alt="TecnoCursos">
+      </div>
+      <div class="qs-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path d="M0,55 C480,10 960,90 1440,40 L1440,100 L0,100 Z" fill="rgba(255, 186, 8, 0.45)" />
+        </svg>
+      </div>
+    </section>
+
+    <header class="qs-top" id="topBar" hidden>
+      <div class="qs-brand">
+        <img src="assets/fotos/LOGO.png" alt="TecnoCursos">
+      </div>
+      <div class="qs-progress" id="progress" aria-label="Progresso"></div>
+      <div class="qs-top-meta">
+        <span class="qs-page-chip" id="pageChip" hidden>0/0</span>
+        <button type="button" id="btnMode" class="qs-sim-btn" title="Modo simulação" hidden aria-pressed="false">
+          <span class="qs-label" id="simLabel">Simulação: OFF</span>
+        </button>
+      </div>
+      <div class="qs-tools">
+        <button type="button" id="btnMusic" class="qs-tool-btn" title="Música" aria-pressed="false">
+          <span class="qs-tool-disc">
+            <svg class="qs-tool-ico ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+            <svg class="qs-tool-ico ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </span>
+          <span class="qs-tool-label">Música</span>
+        </button>
+        <button type="button" id="btnTranscript" class="qs-tool-btn" title="Transcrição">
+          <span class="qs-tool-disc">
+            <svg class="qs-tool-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/>
+            </svg>
+          </span>
+          <span class="qs-tool-label">Transcrição</span>
+        </button>
+        <button type="button" id="btnDark" class="qs-tool-btn" title="Modo escuro" aria-pressed="false">
+          <span class="qs-tool-disc">
+            <svg class="qs-tool-ico ico-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"/>
+            </svg>
+            <svg class="qs-tool-ico ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+            </svg>
+          </span>
+          <span class="qs-tool-label">Escuro</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="qs-stage" id="stage" hidden>
+      <button class="qs-nav" id="btnBack" aria-label="Anterior" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="qs-col">
+        <div class="qs-pts" id="ptsChip" hidden><span class="qs-pts-val">0 pts</span></div>
+        <div class="qs-shell" id="shell"></div>
+        <button type="button" class="qs-more" id="btnMore" hidden aria-label="Ver o conteúdo abaixo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <button class="qs-nav" id="btnFwd" aria-label="Próximo" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </main>
+
+    <div class="qs-wave qs-wave-session" id="sessionWave" aria-hidden="true" hidden>
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,55 C480,10 960,90 1440,40 L1440,100 L0,100 Z" fill="rgba(255, 186, 8, 0.45)" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Modal Tutorial -->
+  <div class="qs-tut-overlay" id="tutorialModal" hidden>
+    <div class="qs-tut-card" role="dialog" aria-modal="true" aria-labelledby="tutTitle">
+      <div class="qs-tut-accent" aria-hidden="true"></div>
+      <button type="button" class="qs-tut-x" id="btnTutorialX" aria-label="Fechar tutorial">×</button>
+      <div class="qs-tut-badge">▶ TUTORIAL</div>
+      <h2 id="tutTitle">Antes de começar — <span>Orientações iniciais</span></h2>
+      <p>Assista ao vídeo para entender como navegar pelos módulos, responder às atividades e usar as ferramentas.</p>
+      <div class="qs-tut-video">
+        <iframe id="tutIframe" src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=58c2b207-5c32-4336-acba-6df97de39825&saveProgress=false" title="Tutorial do treinamento" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen fetchpriority="high"></iframe>
+      </div>
+      <div class="qs-tut-foot">
+        <button type="button" class="qs-tut-close" id="btnTutorialClose">✓ Entendi, vamos começar</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="qs-toast" id="simToast" hidden role="status"></div>
+
+    <button type="button" class="qs-jump-fab" id="simFab" hidden>Sim · mapa</button>
+    <aside class="qs-jump" id="simJump" hidden>
+      <header>
+        <div>
+          <strong>Mapa da simulação</strong>
+          <span id="simJumpPos">—</span>
+        </div>
+        <button type="button" id="btnJumpClose" aria-label="Fechar mapa">×</button>
+      </header>
+      <div class="qs-jump-list" id="simJumpList"></div>
+      <button type="button" class="qs-jump-off" id="btnJumpOff">Desligar simulação</button>
+    </aside>
+
+  <audio id="bg-music" loop preload="metadata" aria-hidden="true"></audio>
+
+  <script src="question-screen-data.js?v=nr11-9"></script>
+  <script src="question-screen.js?v=nr11-4"></script>
+  <script src="audios/audio-manifest.js?v=nr01-7"></script>
+  <script src="narration-text.js?v=nr11-1"></script>
+  <script src="narration.js?v=nr01-7"></script>
+  <script>
+(function () {
+  var session = window.QUESTION_SCREEN_SESSION;
+  if (!session || !session.modules || !session.modules.length) {
+    document.getElementById('shell').innerHTML = '<div class="qs-menu"><p>Conteúdo não encontrado.</p></div>';
+    return;
+  }
+
+  var modules = session.modules;
+
+  /* A abertura e o menu também são páginas numeradas, então abrem o catálogo.
+     mi/si = -1 marca que não são telas de módulo; quem navega olha o "view". */
+  var catalog = [
+    { n: 1, view: 'home', mi: -1, si: -1, mod: 0, type: 'home', title: 'Abertura', kind: 'Abertura' },
+    { n: 2, view: 'menu', mi: -1, si: -1, mod: 0, type: 'menu', title: 'Conteúdo programático', kind: 'Menu' }
+  ];
+  modules.forEach(function (m, mi) {
+    (m.screens || []).forEach(function (s, si) {
+      catalog.push({
+        n: catalog.length + 1,
+        view: 'play',
+        mi: mi,
+        si: si,
+        mod: m.id,
+        type: s.type || '',
+        title: s.title || s.question || s.kicker || s.type || 'Tela',
+        kind: (
+          s.type === 'cover' ? 'Capa' :
+          s.type === 'video' ? 'Vídeo' :
+          s.type === 'image' ? 'Foto' :
+          s.type === 'content' ? 'Texto' :
+          s.type === 'quiz-intro' ? 'Desafio' :
+          s.type === 'question' ? 'Pergunta' :
+          s.type === 'reflect' ? 'Reflexão' :
+          s.type === 'compare' ? 'Compare' :
+          s.type === 'order' ? 'Ordenar' :
+          s.type === 'match' ? 'Associação' :
+          s.type === 'sort' ? 'Inspeção' :
+          s.type === 'finale' ? 'Conclusão' :
+          s.type
+        )
+      });
+    });
+  });
+  var jumpOpen = false;
+  var modIndex = -1;
+  var slideIndex = 0;
+  var answered = {};
+  var qs = null;
+  var mode = 'home'; /* home | menu | play */
+  var showingResult = false;
+  var autoAdvanceTimer = null;
+  var quizState = {
+    active: false,
+    correct: 0,
+    answered: 0,
+    minCorrect: 0,
+    total: 0,
+    introIndex: -1,
+    passed: false,
+    points: 0,
+    streak: 0,
+    bestStreak: 0
+  };
+  var sessionAnswers = {};
+  var PTS_MAX = 50;
+  function isScoreType(type) {
+    return type === 'question' || type === 'order' || type === 'match' || type === 'sort';
+  }
+  function isGateType(type) {
+    return isScoreType(type) || type === 'reflect' || type === 'compare';
+  }
+  // ficha com sequência de fotos: a seta só libera depois de ver todas
+  function isStepsGate(s) {
+    return !!(s && s.type === 'content' && s.steps);
+  }
+  // vídeo com player: só libera o avanço faltando ~8s para o fim
+  function isVideoGate(s) {
+    return !!(s && s.type === 'video' && (s.embed || s.panda || s.video));
+  }
+  function isQuizStep(s) {
+    return !!(s && isScoreType(s.type));
+  }
+  var questionCount = catalog.filter(function (item) { return isScoreType(item.type); }).length;
+
+  function sessionTotals() {
+    var pts = 0;
+    var hits = 0;
+    Object.keys(sessionAnswers).forEach(function (id) {
+      var a = sessionAnswers[id] || {};
+      pts += a.pts || 0;
+      if (a.correct) hits += 1;
+    });
+    return {
+      points: pts,
+      hits: hits,
+      answered: Object.keys(sessionAnswers).length,
+      questions: questionCount,
+      max: questionCount * PTS_MAX
+    };
+  }
+
+  function sessionMedal(tot) {
+    var max = tot.max || 1;
+    var pct = tot.points / max;
+    if (pct >= 0.8) return { emoji: '🥇', name: 'Medalha de ouro', rank: 'gold' };
+    if (pct >= 0.6) return { emoji: '🥈', name: 'Medalha de prata', rank: 'silver' };
+    return { emoji: '🥉', name: 'Medalha de bronze', rank: 'bronze' };
+  }
+
+  function quizMedal(passed, correct, total) {
+    var pct = total ? correct / total : 0;
+    if (pct >= 1) return { emoji: '🥇', name: 'Medalha de ouro', rank: 'gold' };
+    if (passed && pct >= 0.8) return { emoji: '🥈', name: 'Medalha de prata', rank: 'silver' };
+    if (passed) return { emoji: '🥉', name: 'Medalha de bronze', rank: 'bronze' };
+    return { emoji: '📚', name: '', rank: 'none' };
+  }
+
+  function updatePtsChip() {
+    var chip = document.getElementById('ptsChip');
+    if (!chip) return;
+    var tot = sessionTotals();
+    /* O placar só faz sentido na atividade do fim do módulo: fora dela não
+       há o que pontuar, e o chip virava enfeite pelo resto do curso. Vale
+       da abertura do desafio até o resultado; depois some de novo. */
+    var s = mode === 'play' ? current() : null;
+    var noDesafio = !!s && (isScoreType(s.type) || s.type === 'quiz-intro');
+    chip.hidden = !(noDesafio || (mode === 'play' && showingResult));
+    var val = chip.querySelector('.qs-pts-val');
+    if (!val) {
+      val = document.createElement('span');
+      val.className = 'qs-pts-val';
+      chip.insertBefore(val, chip.firstChild);
+    }
+    val.textContent = tot.points + ' pts';
+  }
+
+  /* No acerto o placar “pula” e sobe um +N — feedback rápido sem atrapalhar. */
+  function celebratePts(gained) {
+    var chip = document.getElementById('ptsChip');
+    if (!chip || !(gained > 0)) {
+      updatePtsChip();
+      return;
+    }
+    updatePtsChip();
+    chip.classList.remove('is-gain');
+    void chip.offsetWidth;
+    chip.classList.add('is-gain');
+
+    var fly = chip.querySelector('.qs-pts-fly');
+    if (!fly) {
+      fly = document.createElement('span');
+      fly.className = 'qs-pts-fly';
+      fly.setAttribute('aria-hidden', 'true');
+      chip.appendChild(fly);
+    }
+    fly.textContent = '+' + gained;
+    fly.classList.remove('is-on');
+    void fly.offsetWidth;
+    fly.classList.add('is-on');
+
+    clearTimeout(celebratePts._t);
+    celebratePts._t = setTimeout(function () {
+      chip.classList.remove('is-gain');
+      if (fly) fly.classList.remove('is-on');
+    }, 900);
+  }
+
+  function clearAutoAdvance() {
+    if (autoAdvanceTimer) {
+      clearTimeout(autoAdvanceTimer);
+      autoAdvanceTimer = null;
+    }
+  }
+
+  function resetQuizState() {
+    quizState = {
+      active: false,
+      correct: 0,
+      answered: 0,
+      minCorrect: 0,
+      total: 0,
+      introIndex: -1,
+      passed: false,
+      points: 0,
+      streak: 0,
+      bestStreak: 0
+    };
+    showingResult = false;
+    updatePtsChip();
+  }
+
+  function countQuizQuestionsFrom(startIdx) {
+    var list = screens();
+    var n = 0;
+    for (var i = startIdx + 1; i < list.length; i++) {
+      if (!isScoreType(list[i].type)) break;
+      n++;
+    }
+    return n || 1;
+  }
+
+  function isLastQuizQuestion() {
+    var s = current();
+    if (!isQuizStep(s)) return false;
+    var next = screens()[slideIndex + 1];
+    return !isQuizStep(next);
+  }
+
+  function clearQuizAnswers() {
+    var list = screens();
+    if (quizState.introIndex < 0) return;
+    for (var i = quizState.introIndex + 1; i < list.length; i++) {
+      if (!isScoreType(list[i].type)) break;
+      delete answered[list[i].id];
+      delete sessionAnswers[list[i].id];
+    }
+  }
+
+  /* Progresso e página atual ficam no navegador, para o F5 continuar de onde parou. */
+  var RESUME_KEY = 'nr11-sessao-aprender-resume';
+  var resumeBusy = false;
+  var progress = { unlockedUpTo: 0, completed: {} };
+  var menuFocus = 0;
+  var lastPlayedIndex = -1;
+  try { localStorage.removeItem('nr17-sessao-aprender-resume'); } catch (err) {}
+
+  function saveResume() {
+    if (resumeBusy) return;
+    try {
+      localStorage.setItem(RESUME_KEY, JSON.stringify({
+        v: 1,
+        page: currentGlobalPage(),
+        menuFocus: menuFocus,
+        lastPlayedIndex: lastPlayedIndex,
+        progress: {
+          unlockedUpTo: progress.unlockedUpTo,
+          completed: progress.completed
+        },
+        answered: answered,
+        sessionAnswers: sessionAnswers,
+        quizState: quizState,
+        showingResult: showingResult
+      }));
+    } catch (err) {}
+  }
+
+  function loadResume() {
+    try {
+      var raw = localStorage.getItem(RESUME_KEY);
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (!data || data.v !== 1 || !data.page) return null;
+      if (data.page < 1 || data.page > catalog.length) return null;
+      return data;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function applyResume(data) {
+    resumeBusy = true;
+    if (typeof data.menuFocus === 'number') menuFocus = data.menuFocus;
+    if (typeof data.lastPlayedIndex === 'number') lastPlayedIndex = data.lastPlayedIndex;
+    if (data.progress) {
+      progress.unlockedUpTo = Number(data.progress.unlockedUpTo) || 0;
+      progress.completed = data.progress.completed || {};
+    }
+    var savedAnswered = data.answered || {};
+    var savedSession = data.sessionAnswers || {};
+    var savedQuiz = data.quizState || quizState;
+    var savedShowing = !!data.showingResult;
+
+    if (data.page <= 1) {
+      showHome();
+    } else {
+      jumpToPage(data.page);
+      answered = savedAnswered;
+      sessionAnswers = savedSession;
+      quizState = savedQuiz;
+      if (savedShowing) showQuizResult();
+      else {
+        updateNav();
+        updatePtsChip();
+      }
+    }
+    resumeBusy = false;
+    saveResume();
+  }
+
+  var demoMode = false;
+  try { demoMode = sessionStorage.getItem('nr17-demoMode') === '1'; } catch (err) {}
+
+  function isUnlocked(i) {
+    if (demoMode) return true;
+    return i >= 0 && i <= progress.unlockedUpTo;
+  }
+
+  function isCompleted(i) {
+    return !!progress.completed[String(i)];
+  }
+
+  function completeCurrentModule() {
+    if (modIndex < 0) return;
+    lastPlayedIndex = modIndex;
+    progress.completed[String(modIndex)] = true;
+    if (modIndex + 1 < modules.length) {
+      progress.unlockedUpTo = Math.max(progress.unlockedUpTo, modIndex + 1);
+    }
+    saveResume();
+  }
+
+  // módulo visível no menu; 0 quando a trilha já acabou
+  function nextModuleNumber() {
+    var m = modules[menuFocus];
+    return m ? m.id : 0;
+  }
+
+  function menuCallout() {
+    var next = -1;
+    for (var i = 0; i < modules.length; i++) {
+      if (isUnlocked(i) && !isCompleted(i)) { next = i; break; }
+    }
+    if (next < 0) {
+      var allDone = modules.every(function (_, i) { return isCompleted(i); });
+      if (allDone) {
+        return {
+          title: 'Treinamento concluído!',
+          body: 'Você finalizou todos os módulos. Pode revisitar qualquer um quando quiser.'
+        };
+      }
+      next = progress.unlockedUpTo;
+    }
+    var m = modules[next];
+    if (next === 0 && !isCompleted(0)) {
+      return {
+        title: demoMode ? 'Modo simulação ligado' : 'Vamos começar pelo Módulo 1?',
+        body: demoMode
+          ? 'Todos os módulos estão liberados. Avance sem travar em quiz ou vídeo.'
+          : ((m.title || '') + ' — toque no card liberado para iniciar.')
+      };
+    }
+    return {
+      title: demoMode ? 'Modo simulação ligado' : ('Módulo ' + m.id + ' liberado!'),
+      body: demoMode
+        ? 'Todos os módulos estão liberados. Avance sem travar em quiz ou vídeo.'
+        : ((m.title || '') + ' — toque no card para continuar.')
+    };
+  }
+
+  var app = document.getElementById('app');
+  var home = document.getElementById('home');
+  var topBar = document.getElementById('topBar');
+  var stage = document.getElementById('stage');
+  var progressEl = document.getElementById('progress');
+  var shell = document.getElementById('shell');
+  var btnBack = document.getElementById('btnBack');
+  var btnFwd = document.getElementById('btnFwd');
+  var brandTxt = null;
+  var bgMusic = document.getElementById('bg-music');
+
+  if (brandTxt) brandTxt.textContent = (session.meta && session.meta.title) || 'NR-11';
+  if (bgMusic) {
+    bgMusic.src = (session.meta && session.meta.musicSrc) || 'musica/musica_foco.mp3';
+    bgMusic.volume = 0.35;
+  }
+
+  var sessionWave = document.getElementById('sessionWave');
+
+  function setChrome(visible) {
+    // a barra fica sempre no DOM: na abertura o CSS deixa só as ferramentas
+    if (topBar) topBar.hidden = false;
+    if (stage) stage.hidden = !visible;
+    if (home) home.hidden = visible;
+    if (sessionWave) sessionWave.hidden = !visible;
+    app.classList.toggle('is-home', !visible);
+  }
+
+  function showHome() {
+    mode = 'home';
+    modIndex = -1;
+    clearAutoAdvance();
+    resetQuizState();
+    if (qs) { qs.destroy(); qs = null; }
+    setChrome(false);
+    renderProgress();
+    syncJumpUI();
+    if (window.Narration) Narration.pageChanged();
+    saveResume();
+  }
+
+  function currentMod() { return modules[modIndex]; }
+  function screens() { return currentMod() ? currentMod().screens : []; }
+  function current() { return screens()[slideIndex]; }
+
+  function isFinale() {
+    var s = current();
+    return !!(s && s.type === 'finale');
+  }
+
+  function exitPlay() {
+    if (isFinale()) showHome();
+    else showMenu(Math.max(0, modIndex));
+  }
+
+  function renderProgress() {
+    if (mode !== 'play') {
+      progressEl.innerHTML = '';
+      return;
+    }
+    var list = screens();
+    progressEl.innerHTML = list.map(function (_, i) {
+      var cls = i < slideIndex ? 'done' : (i === slideIndex ? 'cur' : '');
+      return '<i class="' + cls + '"></i>';
+    }).join('');
+  }
+
+  function canForward() {
+    if (isFinale()) return false;
+    if (showingResult) return !!(quizState.passed || demoMode);
+    var s = current();
+    if (!s) return false;
+    /* A ficha de alongamento trava a seta mesmo em simulação: o bloqueio
+       faz parte do teste da página. O atalho go continua pulando. */
+    if (isStepsGate(s)) return !!answered[s.id];
+    if (demoMode) return true;
+    if (s.type === 'question') return !!answered[s.id];
+    if (isGateType(s.type)) return !!answered[s.id];
+    if (isVideoGate(s)) return !!answered[s.id];
+    return true;
+  }
+
+  function updateNav() {
+    if (mode === 'home') {
+      btnBack.disabled = true;
+      btnFwd.disabled = true;
+      return;
+    }
+    if (mode === 'menu') {
+      btnBack.disabled = false;
+      btnFwd.disabled = menuFocus >= lastMenuIndex();
+      return;
+    }
+    if (mode !== 'play') {
+      btnBack.disabled = true;
+      btnFwd.disabled = true;
+      return;
+    }
+    btnBack.disabled = showingResult && !!quizState.passed && !demoMode;
+    btnFwd.disabled = showingResult ? !(quizState.passed || demoMode) : !canForward();
+  }
+
+  // temas das questões erradas, para orientar o que estudar antes de tentar de novo
+  function buildReviewList() {
+    var list = screens();
+    var out = [];
+    var seen = {};
+    if (quizState.introIndex < 0) return out;
+    for (var i = quizState.introIndex + 1; i < list.length; i++) {
+      var s = list[i];
+      if (!isScoreType(s.type)) break;
+      if (s.opinion) continue;
+      var ans = sessionAnswers[s.id];
+      if (ans && ans.correct) continue;
+      var topic = s.review || s.question || s.title || '';
+      if (!topic || seen[topic]) continue;
+      seen[topic] = true;
+      out.push(topic);
+    }
+    return out;
+  }
+
+  function showQuizResult() {
+    clearAutoAdvance();
+    showingResult = true;
+    var total = Math.max(Number(quizState.total) || 0, Number(quizState.answered) || 0, 1);
+    var hits = quizState.correct;
+    var min = quizState.minCorrect || Math.ceil(total * 0.75);
+    quizState.passed = hits >= min;
+    var medal = quizMedal(quizState.passed, hits, total);
+    var m = currentMod() || {};
+    var unlock = m.titleUnlock || null;
+    var titleUnlock = (quizState.passed && unlock)
+      ? {
+          moduleLabel: 'Módulo ' + m.id + ' concluído',
+          title: unlock.title,
+          body: unlock.body,
+          icon: unlock.icon
+        }
+      : null;
+    var faceIcon = titleUnlock ? (titleUnlock.icon || '🏅') : medal.emoji;
+    var faceRank = titleUnlock ? 'title' : medal.rank;
+
+    if (qs) qs.destroy();
+    qs = QuestionScreen.mount(shell, {
+      type: 'quiz-result',
+      passed: quizState.passed,
+      score: hits,
+      total: total,
+      minCorrect: min,
+      points: quizState.points,
+      streak: quizState.bestStreak,
+      medal: faceIcon,
+      medalName: '',
+      medalRank: faceRank,
+      icon: faceIcon,
+      title: quizState.passed ? 'Desafio concluído!' : 'Desafio não concluído',
+      titleUnlock: titleUnlock,
+      mode: quizState.mode || '',
+      review: quizState.passed ? [] : buildReviewList()
+    }, {
+      onContinue: handleContinue
+    });
+
+    renderProgress();
+    updateNav();
+    updatePtsChip();
+    if (quizState.passed) {
+      try { if (typeof playBeep === 'function') playBeep('end'); } catch (e) {}
+    }
+  }
+
+  function restartQuiz() {
+    clearAutoAdvance();
+    showingResult = false;
+    clearQuizAnswers();
+    quizState.correct = 0;
+    quizState.answered = 0;
+    quizState.passed = false;
+    quizState.points = 0;
+    quizState.streak = 0;
+    quizState.bestStreak = 0;
+    quizState.active = true;
+    if (quizState.introIndex >= 0) {
+      slideIndex = quizState.introIndex;
+      mountSlide();
+    }
+  }
+
+  function finishAfterQuiz() {
+    clearAutoAdvance();
+    showingResult = false;
+    quizState.active = false;
+    var list = screens();
+    var next = slideIndex + 1;
+    while (next < list.length && isScoreType(list[next].type)) next++;
+    if (next >= list.length) {
+      var fechado = (modIndex >= 0 ? modIndex : lastPlayedIndex);
+      completeCurrentModule();
+      showMenuAfterModule(fechado);
+      return;
+    }
+    slideIndex = next;
+    mountSlide();
+    if (isFinale()) completeCurrentModule();
+  }
+
+  function handleContinue(info) {
+    var action = info && info.action;
+    if (action === 'retry') {
+      restartQuiz();
+      return;
+    }
+    if (action === 'back') {
+      showingResult = false;
+      mountSlide();
+      return;
+    }
+    if (action === 'finish') {
+      finishAfterQuiz();
+      return;
+    }
+    advance();
+  }
+
+  function advance() {
+    clearAutoAdvance();
+    if (mode === 'menu') {
+      menuStep(1);
+      return;
+    }
+    if (showingResult) {
+      if (quizState.passed || demoMode) finishAfterQuiz();
+      return;
+    }
+    var s = current();
+    if (s && isQuizStep(s) && answered[s.id] && isLastQuizQuestion()) {
+      showQuizResult();
+      return;
+    }
+    if (slideIndex >= screens().length - 1) {
+      var fechado = (modIndex >= 0 ? modIndex : lastPlayedIndex);
+      completeCurrentModule();
+      if (isFinale()) {
+        updateNav();
+        return;
+      }
+      showMenuAfterModule(fechado);
+      return;
+    }
+    go(1);
+  }
+
+  function lastMenuIndex() {
+    if (demoMode) return modules.length - 1;
+    return Math.min(progress.unlockedUpTo, modules.length - 1);
+  }
+
+  function clampMenuIndex(i) {
+    if (i == null || i < 0) return 0;
+    var cap = lastMenuIndex();
+    if (i > cap) return cap;
+    return i;
+  }
+
+  /* A trilha é sequencial. Não procura o primeiro módulo incompleto — isso
+     pulava o 3 e o 4 já feitos e jogava a pessoa no 5. */
+  function activeMenuIndex() {
+    if (menuFocus >= 0 && menuFocus < modules.length) return clampMenuIndex(menuFocus);
+    if (lastPlayedIndex >= 0) return clampMenuIndex(lastPlayedIndex);
+    return 0;
+  }
+
+  /* Ao terminar o módulo N o menu para em N+1, mesmo que N+1 já tenha sido feito. */
+  function nextMenuIndex(fromIndex) {
+    var from = fromIndex;
+    if (from == null || from < 0) from = lastPlayedIndex;
+    if (from >= 0 && from + 1 < modules.length) return clampMenuIndex(from + 1);
+    if (from >= 0) return clampMenuIndex(from);
+    return activeMenuIndex();
+  }
+
+  function showMenuAfterModule(fromIndex) {
+    showMenu(nextMenuIndex(fromIndex));
+  }
+
+  // no menu as setas andam um módulo por vez, para a trilha seguir em ordem
+  function menuStep(delta) {
+    var alvo = menuFocus + delta;
+    if (alvo < 0) { showHome(); return; }
+    if (alvo > lastMenuIndex()) return;
+    showMenu(alvo);
+  }
+
+  function showMenu(focusIndex) {
+    mode = 'menu';
+    modIndex = -1;
+    clearAutoAdvance();
+    resetQuizState();
+    if (qs) { qs.destroy(); qs = null; }
+    if (brandTxt) brandTxt.textContent = (session.meta && session.meta.title) || 'NR-11';
+    setChrome(true);
+    var i = (focusIndex != null && focusIndex >= 0 && focusIndex < modules.length)
+      ? focusIndex
+      : activeMenuIndex();
+    i = clampMenuIndex(i);
+    menuFocus = i;
+    var m = modules[i] || modules[0];
+    var allDone = modules.every(function (_, idx) { return isCompleted(idx); });
+    var reviewing = allDone || isCompleted(i);
+    var cta = reviewing ? 'Revisar módulo' : 'Iniciar módulo';
+    var kicker = (allDone && i === 0)
+      ? 'Treinamento concluído'
+      : 'Você está aqui';
+    var lead = allDone
+      ? ('Você finalizou os módulos. Toque para revisar o Módulo ' + m.id + '.')
+      : 'Um módulo por vez. Ao concluir, o próximo é liberado.';
+    var dots = modules.map(function (_, idx) {
+      var cls = 'qs-mod-dot';
+      if (idx === i && !allDone) cls += ' is-on';
+      else if (isCompleted(idx)) cls += ' is-done';
+      return '<span class="' + cls + '" aria-hidden="true"></span>';
+    }).join('');
+    shell.innerHTML =
+      '<div class="qs-menu is-single">' +
+        '<p class="qs-menu-brand">' + ((session.meta && session.meta.title) || 'NR-11 — Operação de Paleteira Manual') + '</p>' +
+        '<p class="qs-menu-lead">' + lead + '</p>' +
+        '<article class="qs-mod-focus">' +
+          '<div class="qs-mod-kicker">' + kicker + '</div>' +
+          '<div class="qs-mod-hero">' +
+            '<span class="qs-mod-big">' + String(m.id).padStart(2, '0') + '</span>' +
+            '<span class="qs-mod-now">Módulo ' + m.id + '<small>de ' + modules.length + '</small></span>' +
+          '</div>' +
+          '<h2 class="qs-mod-title">' + m.title + '</h2>' +
+          (m.objective ? '<p class="qs-mod-goal">' + m.objective + '</p>' : '') +
+          '<button type="button" class="qs-mod-start" data-mod="' + i + '">' + cta + '</button>' +
+        '</article>' +
+        '<div class="qs-mod-dots" aria-hidden="true">' + dots + '</div>' +
+      '</div>';
+    renderProgress();
+    updateNav();
+    syncJumpUI();
+    if (window.Narration) Narration.pageChanged();
+    saveResume();
+  }
+
+  /* No celular a trilha não cabe inteira: a lista começa no Módulo 1 e o
+     módulo da vez pode ficar abaixo da dobra, passando a impressão de que o
+     curso termina no 2. Aqui a rolagem já vai até ele. O movimento é suave de
+     propósito: além de levar ao card certo, mostra que a lista corre.
+
+     O alvo é o índice liberado, e não o primeiro card marcado como aberto:
+     quem pula páginas pelo atalho destrava todos os módulos anteriores de
+     uma vez, e aí o primeiro aberto seria sempre o Módulo 1. */
+  function revelarModuloLiberado() {
+    var caixa = shell.querySelector('.qs-menu');
+    if (!caixa) return;
+    var alvo = Math.min(progress.unlockedUpTo, modules.length - 1);
+    var card = caixa.querySelector('.qs-mod-card[data-mod="' + alvo + '"]');
+    if (!card) return;
+
+    requestAnimationFrame(function () {
+      var sobra = caixa.scrollHeight - caixa.clientHeight;
+      if (sobra <= 0) return;                       // cabe tudo: nada a fazer
+
+      /* offsetTop, e não getBoundingClientRect: o menu entra com uma animação
+         que o encolhe um pouco, e medida de tela sai torta enquanto ela roda. */
+      var topo = card.offsetTop;
+      var fim = topo + card.offsetHeight;
+      var vista = caixa.scrollTop;
+
+      // não basta caber na borda: sem respiro embaixo o card passa despercebido
+      var RESPIRO = 40;
+      if (topo >= vista && fim + RESPIRO <= vista + caixa.clientHeight) return;
+
+      caixa.scrollTo({
+        top: Math.max(0, Math.min(sobra, topo - 12)),
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  function openModule(i) {
+    if (!isUnlocked(i)) return;
+    clearAutoAdvance();
+    resetQuizState();
+    setChrome(true);
+    modIndex = i;
+    lastPlayedIndex = i;
+    menuFocus = i;
+    slideIndex = 0;
+    answered = {};
+    mode = 'play';
+    if (brandTxt) brandTxt.textContent = 'Módulo ' + currentMod().id;
+    prefetchNearbyImages(0);
+    var list = screens();
+    for (var j = 0; j < list.length; j++) {
+      if (list[j] && list[j].image) prefetchImage(list[j].image);
+    }
+    mountSlide();
+  }
+
+  function currentGlobalPage() {
+    if (mode === 'home') return 1;
+    if (mode === 'menu') return 2;
+    if (mode !== 'play' || modIndex < 0) return 0;
+    for (var i = 0; i < catalog.length; i++) {
+      if (catalog[i].mi === modIndex && catalog[i].si === slideIndex) return catalog[i].n;
+    }
+    return 0;
+  }
+
+  function typeLabel(type) {
+    return (
+      type === 'home' ? 'Abertura' :
+      type === 'menu' ? 'Menu' :
+      type === 'cover' ? 'Capa' :
+      type === 'video' ? 'Vídeo' :
+      type === 'image' ? 'Foto' :
+      type === 'content' ? 'Texto' :
+      type === 'quiz-intro' ? 'Desafio' :
+      type === 'question' ? 'Pergunta' :
+      type === 'reflect' ? 'Reflexão' :
+      type === 'compare' ? 'Compare' :
+      type === 'order' ? 'Ordenar' :
+      type === 'match' ? 'Associação' :
+      type === 'sort' ? 'Inspeção' :
+      type === 'finale' ? 'Conclusão' :
+      type || 'Tela'
+    );
+  }
+
+  function prepareQuizForJump(targetSi) {
+    var list = screens();
+    var intro = -1;
+    var i;
+    for (i = 0; i < list.length; i++) {
+      if (list[i].type === 'quiz-intro') intro = i;
+    }
+    if (intro < 0) return;
+    var total = 0;
+    var min = 0;
+    for (i = intro + 1; i < list.length; i++) {
+      if (isScoreType(list[i].type)) total++;
+    }
+    min = list[intro].minCorrect != null ? Number(list[intro].minCorrect) : Math.ceil(total * 0.75);
+    quizState = {
+      active: true,
+      correct: total,
+      answered: total,
+      minCorrect: min,
+      total: total,
+      introIndex: intro,
+      passed: true,
+      points: 0,
+      streak: 0,
+      bestStreak: 0
+    };
+    for (i = 0; i < list.length; i++) {
+      if ((isGateType(list[i].type) || isStepsGate(list[i]) || isVideoGate(list[i])) && list[i].id) {
+        answered[list[i].id] = true;
+      }
+    }
+    if (targetSi > intro) showingResult = false;
+  }
+
+  function jumpToPage(n) {
+    var item = catalog[n - 1];
+    if (!item) return false;
+    if (item.view === 'home') { showHome(); return true; }
+    if (item.view === 'menu') { showMenu(menuFocus); return true; }
+    /* O pulo atravessa o bloqueio dos módulos, então libera o caminho até ali:
+       sem isso o menu mostraria como trancado o módulo em que a pessoa está. */
+    progress.unlockedUpTo = Math.max(progress.unlockedUpTo, item.mi);
+    jumpToScreen(item.mi, item.si);
+    return true;
+  }
+
+  /* Última tela de conteúdo de um módulo: quem volta para o módulo anterior
+     para aqui, e não na última pergunta do desafio. */
+  function lastContentIndex(mi) {
+    var list = (modules[mi] && modules[mi].screens) || [];
+    for (var i = list.length - 1; i >= 0; i--) {
+      if (!isScoreType(list[i].type) && list[i].type !== 'quiz-intro') return i;
+    }
+    return Math.max(0, list.length - 1);
+  }
+
+  function jumpToScreen(mi, si) {
+    if (!modules[mi] || !modules[mi].screens[si]) return;
+    clearAutoAdvance();
+    resetQuizState();
+    answered = {};
+    setChrome(true);
+    modIndex = mi;
+    lastPlayedIndex = mi;
+    menuFocus = mi;
+    slideIndex = si;
+    mode = 'play';
+    if (brandTxt) brandTxt.textContent = 'Módulo ' + currentMod().id;
+    var s = current();
+    if (s && (isQuizStep(s) || s.type === 'quiz-intro' || s.type === 'finale')) {
+      prepareQuizForJump(si);
+    }
+    mountSlide();
+    syncJumpUI();
+    var listEl = document.getElementById('simJumpList');
+    var cur = listEl && listEl.querySelector('.qs-jump-item.is-cur');
+    if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest' });
+  }
+
+  function renderJumpList() {
+    var box = document.getElementById('simJumpList');
+    if (!box) return;
+    var html = '';
+    var lastMod = null;
+    var curN = currentGlobalPage();
+    catalog.forEach(function (item) {
+      if (item.mod !== lastMod) {
+        lastMod = item.mod;
+        html += '<div class="qs-jump-mod">' +
+          (item.view === 'play' ? ('Módulo ' + item.mod) : 'Início') + '</div>';
+      }
+      html += '<button type="button" class="qs-jump-item' + (item.n === curN ? ' is-cur' : '') + '" data-jump="' + item.n + '">' +
+        '<span class="qs-jump-n">' + item.n + '</span>' +
+        '<span><small>' + typeLabel(item.type) + '</small><b>' + item.title + '</b></span>' +
+      '</button>';
+    });
+    box.innerHTML = html;
+    box.querySelectorAll('[data-jump]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        sfx('click');
+        jumpToPage(+btn.getAttribute('data-jump'));
+      });
+    });
+  }
+
+  function setJumpOpen(on) {
+    jumpOpen = !!on && !!demoMode;
+    var panel = document.getElementById('simJump');
+    if (panel) panel.hidden = !jumpOpen;
+    if (jumpOpen) renderJumpList();
+  }
+
+  function syncJumpUI() {
+    var globalTotal = catalog.length;
+    var globalN = currentGlobalPage();
+    var globalPos = globalN ? (globalN + ' / ' + globalTotal) : ('— / ' + globalTotal);
+    var chip = document.getElementById('pageChip');
+    if (chip) {
+      if (mode !== 'play' || modIndex < 0) {
+        chip.hidden = true;
+      } else {
+        var list = screens();
+        var total = list.length || 1;
+        var n = Math.min(total, (slideIndex | 0) + 1);
+        if (showingResult) n = total;
+        chip.hidden = false;
+        chip.textContent = n + ' / ' + total;
+        chip.title = 'Tela do módulo';
+      }
+    }
+    var posEl = document.getElementById('simJumpPos');
+    if (posEl) posEl.textContent = globalPos;
+    var fab = document.getElementById('simFab');
+    if (fab) fab.hidden = !demoMode;
+    if (jumpOpen && demoMode) renderJumpList();
+    else if (!demoMode) setJumpOpen(false);
+  }
+
+  var imagePrefetchCache = {};
+  function prefetchImage(src) {
+    if (!src || imagePrefetchCache[src]) return;
+    imagePrefetchCache[src] = true;
+    var img = new Image();
+    img.decoding = 'async';
+    img.src = src;
+  }
+  function prefetchNearbyImages(fromIndex) {
+    var list = screens();
+    var start = Math.max(0, fromIndex | 0);
+    var end = Math.min(list.length, start + 3);
+    for (var i = start; i < end; i++) {
+      if (list[i] && list[i].image) prefetchImage(list[i].image);
+    }
+  }
+
+  function mountSlide() {
+    var s = current();
+    if (!s) return;
+    clearAutoAdvance();
+    showingResult = false;
+    prefetchNearbyImages(slideIndex);
+    var payload = Object.assign({}, s);
+
+    if (s.type === 'finale') {
+      var tot = sessionTotals();
+      var medal = sessionMedal(tot);
+      payload.points = tot.points;
+      payload.maxPoints = tot.max;
+      payload.hits = tot.hits;
+      payload.questions = tot.questions;
+      payload.medal = medal.emoji;
+      payload.medalName = medal.name;
+      payload.medalRank = medal.rank;
+      try { if (typeof playBeep === 'function') playBeep('end'); } catch (e) {}
+    }
+
+    if (s.type === 'quiz-intro') {
+      var total = s.count != null ? Number(s.count) : countQuizQuestionsFrom(slideIndex);
+      quizState = {
+        active: true,
+        correct: 0,
+        answered: 0,
+        minCorrect: s.minCorrect != null ? Number(s.minCorrect) : Math.ceil(total * 0.75),
+        total: total,
+        introIndex: slideIndex,
+        passed: false,
+        points: 0,
+        streak: 0,
+        bestStreak: 0,
+        mode: ''
+      };
+    }
+
+    if (s.type === 'sort' && Array.isArray(s.items) && s.items.length) {
+      quizState.total = s.items.length;
+      if (s.minCorrect != null) quizState.minCorrect = Number(s.minCorrect);
+      quizState.mode = 'sort';
+      quizState.active = true;
+    }
+    if (s.type === 'match' && Array.isArray(s.pairs) && s.pairs.length) {
+      quizState.total = s.pairs.length;
+      if (s.minCorrect != null) quizState.minCorrect = Number(s.minCorrect);
+      quizState.active = true;
+    }
+    if (s.type === 'order') {
+      quizState.total = 1;
+      quizState.minCorrect = 1;
+      quizState.mode = 'order';
+      quizState.active = true;
+    }
+
+    if (qs) qs.destroy();
+    qs = QuestionScreen.mount(shell, payload, {
+      quizScoring: quizState.active && isQuizStep(s) && !s.opinion,
+      maxPoints: PTS_MAX,
+      /* 40s: tempo padrao das atividades pontuadas (pergunta, ordenar, etc.). */
+      time: s.time || 40,
+      onSelect: function (result) {
+        answered[s.id] = true;
+        saveResume();
+        if (quizState.active && isQuizStep(s) && !s.opinion) {
+          var pts = (result && result.points) || 0;
+          sessionAnswers[s.id] = { pts: pts, correct: !!(result && result.correct) };
+          if (result && (result.kind === 'sort' || result.kind === 'match' || result.kind === 'order') && result.total != null) {
+            quizState.answered = result.total;
+            quizState.total = result.total;
+            quizState.correct = result.hits || 0;
+            quizState.minCorrect = s.minCorrect != null ? Number(s.minCorrect) : Math.ceil(result.total * 0.75);
+            quizState.points = pts;
+            quizState.streak = result.correct ? 1 : 0;
+            quizState.bestStreak = quizState.streak;
+            updateNav();
+            if (pts) celebratePts(pts);
+          } else {
+            quizState.answered += 1;
+            if (result && result.correct) {
+              quizState.correct += 1;
+              quizState.streak += 1;
+              quizState.bestStreak = Math.max(quizState.bestStreak, quizState.streak);
+              quizState.points += pts;
+              updateNav();
+              celebratePts(pts);
+            } else {
+              quizState.streak = 0;
+              updateNav();
+              updatePtsChip();
+            }
+          }
+        } else {
+          updateNav();
+          updatePtsChip();
+        }
+        if (!isQuizStep(s)) return;
+        clearAutoAdvance();
+        autoAdvanceTimer = setTimeout(function () {
+          if (isLastQuizQuestion()) showQuizResult();
+          else go(1);
+        }, s.type === 'order' || s.type === 'match' || s.type === 'sort' ? 1600 : 3000);
+      },
+      onContinue: handleContinue
+    });
+
+    if (!isGateType(s.type) && !isVideoGate(s) && !isStepsGate(s)) answered[s.id] = true;
+    if (s.type === 'finale') completeCurrentModule();
+    renderProgress();
+    updateNav();
+    updatePtsChip();
+    syncJumpUI();
+    if (window.Narration) Narration.pageChanged();
+    saveResume();
+  }
+
+  function go(delta) {
+    if (mode === 'menu') {
+      menuStep(delta < 0 ? -1 : 1);
+      return;
+    }
+    if (mode !== 'play') return;
+    clearAutoAdvance();
+    if (showingResult) {
+      if (delta < 0) {
+        showingResult = false;
+        mountSlide();
+        return;
+      }
+      if (delta > 0 && (quizState.passed || demoMode)) finishAfterQuiz();
+      return;
+    }
+    if (delta < 0 && slideIndex <= 0) {
+      showMenu(Math.max(0, modIndex));
+      return;
+    }
+    if (delta > 0) {
+      var s = current();
+      if (s && isQuizStep(s) && answered[s.id] && isLastQuizQuestion()) {
+        showQuizResult();
+        return;
+      }
+    }
+    var next = slideIndex + delta;
+    if (next < 0 || next >= screens().length) return;
+    if (delta > 0 && !canForward()) return;
+    slideIndex = next;
+    mountSlide();
+  }
+
+  function openTutorial() {
+    var modal = document.getElementById('tutorialModal');
+    var iframe = document.getElementById('tutIframe');
+    if (!modal) return;
+    modal.hidden = false;
+    if (iframe && !iframe.getAttribute('data-src')) {
+      iframe.setAttribute('data-src', iframe.src);
+    }
+  }
+
+  function closeTutorial() {
+    var modal = document.getElementById('tutorialModal');
+    var iframe = document.getElementById('tutIframe');
+    if (modal) modal.hidden = true;
+    if (iframe) {
+      var src = iframe.getAttribute('data-src') || iframe.getAttribute('src') || iframe.src;
+      iframe.src = src;
+    }
+  }
+
+  function sfx(type) {
+    try { if (typeof playBeep === 'function') playBeep(type); } catch (e) {}
+  }
+
+  shell.addEventListener('click', function (e) {
+    var start = e.target.closest('.qs-mod-start, .qs-mod-card');
+    if (start) {
+      sfx('click');
+      openModule(+start.dataset.mod);
+    }
+  });
+
+  btnBack.addEventListener('click', function () { sfx('click'); go(-1); });
+  btnFwd.addEventListener('click', function () { sfx('click'); advance(); });
+  document.getElementById('btnStartHome').addEventListener('click', function () { sfx('click'); showMenu(0); });
+  document.getElementById('btnTutorialHome').addEventListener('click', openTutorial);
+  document.getElementById('btnTutorialClose').addEventListener('click', closeTutorial);
+  document.getElementById('btnTutorialX').addEventListener('click', closeTutorial);
+  document.getElementById('tutorialModal').addEventListener('click', function (e) {
+    if (e.target === this) closeTutorial();
+  });
+
+  /* Narração: o botão liga e desliga. Ligado, ele acompanha a navegação e
+     narra cada tela nova sozinho. */
+  var btnTranscript = document.getElementById('btnTranscript');
+  if (window.Narration) {
+    Narration.bindNarrationEvents({
+      button: btnTranscript,
+      getState: function () {
+        return {
+          mode: mode,
+          screen: mode === 'play' ? current() : null,
+          nextModule: mode === 'menu' ? nextModuleNumber() : 0
+        };
+      }
+    });
+  }
+
+  btnTranscript.addEventListener('click', function () {
+    if (window.Narration) Narration.toggleNarration();
+  });
+
+  /* O vídeo tem narração própria: quando ele começa, a nossa cala para não
+     falarem por cima. O botão continua ligado e volta a narrar na tela seguinte. */
+  function hushNarration() {
+    if (window.Narration) Narration.stopSpeech();
+  }
+  window.addEventListener('message', function (ev) {
+    var data = ev && ev.data;
+    if (data == null) return;
+    var msg = typeof data === 'object' ? (data.message || data.event || data.type || '') : data;
+    if (String(msg).toLowerCase().indexOf('panda_play') !== -1) hushNarration();
+  });
+  // 'play' não sobe na árvore, por isso a escuta na fase de captura
+  shell.addEventListener('play', hushNarration, true);
+
+  var musicOn = false;
+  var btnMusic = document.getElementById('btnMusic');
+  btnMusic.addEventListener('click', function () {
+    musicOn = !musicOn;
+    btnMusic.classList.toggle('is-on', musicOn);
+    btnMusic.setAttribute('aria-pressed', musicOn ? 'true' : 'false');
+    if (musicOn && bgMusic) bgMusic.play().catch(function () {});
+    else if (bgMusic) bgMusic.pause();
+  });
+
+  var DARK_KEY = 'nr01-dark';
+  var btnDark = document.getElementById('btnDark');
+  var darkLabel = btnDark && btnDark.querySelector('.qs-tool-label');
+  function applyDark(on) {
+    document.documentElement.classList.toggle('qs-dark', on);
+    if (app) app.classList.toggle('is-dark', on);
+    if (btnDark) {
+      btnDark.classList.toggle('is-on', on);
+      btnDark.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btnDark.title = on ? 'Modo claro' : 'Modo escuro';
+    }
+    if (darkLabel) darkLabel.textContent = on ? 'Claro' : 'Escuro';
+    try { localStorage.setItem(DARK_KEY, on ? '1' : '0'); } catch (e) {}
+  }
+  var darkOn = false;
+  try { darkOn = localStorage.getItem(DARK_KEY) === '1'; } catch (e) {}
+  applyDark(darkOn);
+  if (btnDark) {
+    btnDark.addEventListener('click', function () {
+      applyDark(!document.documentElement.classList.contains('qs-dark'));
+    });
+  }
+
+  document.getElementById('btnMode').addEventListener('click', function () {
+    toggleDemoMode();
+  });
+  document.getElementById('simFab').addEventListener('click', function () {
+    setJumpOpen(!jumpOpen);
+  });
+  document.getElementById('btnJumpClose').addEventListener('click', function () {
+    setJumpOpen(false);
+  });
+  document.getElementById('btnJumpOff').addEventListener('click', function () {
+    if (demoMode) toggleDemoMode();
+  });
+  document.getElementById('pageChip').addEventListener('click', function () {
+    if (demoMode) setJumpOpen(true);
+  });
+
+  function applyDemoUI() {
+    var btn = document.getElementById('btnMode');
+    var label = document.getElementById('simLabel');
+    if (btn) {
+      // só aparece com o modo simulação ligado (pelo atalho); desligar esconde de novo
+      btn.hidden = !demoMode;
+      btn.classList.toggle('is-on', !!demoMode);
+      btn.setAttribute('aria-pressed', demoMode ? 'true' : 'false');
+    }
+    if (label) label.textContent = demoMode ? 'Simulação: ON' : 'Simulação: OFF';
+    syncJumpUI();
+    updateNav();
+  }
+
+  function showSimToast(msg) {
+    var el = document.getElementById('simToast');
+    if (!el) return;
+    el.hidden = false;
+    el.textContent = msg;
+    el.classList.add('is-on');
+    clearTimeout(el._t);
+    el._t = setTimeout(function () {
+      el.classList.remove('is-on');
+      el.hidden = true;
+    }, 2500);
+  }
+
+  function toggleDemoMode() {
+    demoMode = !demoMode;
+    try {
+      sessionStorage.setItem('nr17-demoMode', demoMode ? '1' : '0');
+      sessionStorage.removeItem('nr17-demoBtnVisible');
+    } catch (err) {}
+    applyDemoUI();
+    showSimToast(demoMode ? '🔓 Modo Simulação ATIVADO' : '🔒 Modo Simulação DESATIVADO');
+    setJumpOpen(demoMode);
+    if (mode === 'menu') showMenu(menuFocus);
+  }
+
+  (function initDemoShortcut() {
+    var seq = '';
+    var target = 'qa1010';
+    var goBuf = '';
+    var goTimer = null;
+    var GO_RE = /^go\d{1,3}$/;
+
+    /* "go12" leva à página 12, com Enter ou depois de uma pausa. Funciona
+       sozinho, sem depender do modo simulação. */
+    function runGo() {
+      if (goTimer) { clearTimeout(goTimer); goTimer = null; }
+      var alvo = GO_RE.test(goBuf) ? parseInt(goBuf.slice(2), 10) : 0;
+      goBuf = '';
+      if (!alvo) return;
+      if (!jumpToPage(alvo)) showSimToast('Não existe página ' + alvo);
+    }
+
+    window.addEventListener('keydown', function (e) {
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+      if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
+      if (e.key === 'Enter' && GO_RE.test(goBuf)) {
+        e.preventDefault();
+        runGo();
+        return;
+      }
+      if (!e.key || e.key.length !== 1) {
+        if (e.key === 'Escape') goBuf = '';
+        return;
+      }
+      var ch = e.key.toLowerCase();
+
+      if (ch === 'g') { goBuf = 'g'; return; }
+      if (goBuf === 'g' && ch === 'o') { goBuf = 'go'; return; }
+      if (goBuf.indexOf('go') === 0 && /^\d$/.test(ch) && goBuf.length < 5) {
+        goBuf += ch;
+        if (goTimer) clearTimeout(goTimer);
+        goTimer = setTimeout(runGo, 700);
+        return;
+      }
+      goBuf = '';
+
+      seq = (seq + ch).slice(-target.length);
+      if (seq !== target) return;
+      seq = '';
+      toggleDemoMode();
+    });
+  })();
+
+  /* Setinha de "tem mais abaixo". O que rola muda conforme a tela — ora o
+     cartão inteiro, ora só o painel de texto, ora o menu — então ela procura
+     quem de fato tem conteúdo escondido em vez de apostar num deles. Some
+     sozinha ao chegar no fim e nas telas que já cabem inteiras. */
+  (function initMoreHint() {
+    var btn = document.getElementById('btnMore');
+    if (!btn) return;
+    var FOLGA = 12;          // px de sobra que não valem como "tem mais"
+    var agendado = false;
+
+    function rolavel() {
+      var alvos = stage.querySelectorAll('[data-qs-root], .qs-panel, .qs-menu');
+      for (var i = 0; i < alvos.length; i++) {
+        if (alvos[i].scrollHeight - alvos[i].clientHeight > FOLGA) return alvos[i];
+      }
+      return null;
+    }
+
+    function sync() {
+      agendado = false;
+      var el = rolavel();
+      var falta = el ? (el.scrollHeight - el.clientHeight - el.scrollTop) : 0;
+      btn.hidden = falta <= FOLGA;
+    }
+
+    function agendar() {
+      if (agendado) return;
+      agendado = true;
+      requestAnimationFrame(sync);
+    }
+
+    btn.addEventListener('click', function () {
+      var el = rolavel();
+      if (!el) return;
+      el.scrollBy({ top: Math.round(el.clientHeight * 0.8), behavior: 'smooth' });
+    });
+
+    /* 'scroll' e 'load' não sobem na árvore, daí a escuta na fase de captura.
+       O observer cobre a troca de tela sem precisar avisar daqui de fora; ele
+       só olha filhos, então esconder/mostrar o próprio botão não o acorda. */
+    stage.addEventListener('scroll', agendar, true);
+    stage.addEventListener('load', agendar, true);
+    window.addEventListener('resize', agendar);
+    if (window.MutationObserver) {
+      new MutationObserver(agendar).observe(stage, { childList: true, subtree: true });
+    }
+    agendar();
+  })();
+
+  /* No celular não dá para digitar qa1010, então três toques na logo da
+     TecnoCursos (canto superior esquerdo) ligam o modo simulação. Vale na
+     abertura e na barra dos módulos. A contagem zera se houver pausa longa,
+     para toques avulsos não irem se somando. */
+  (function initLogoShortcut() {
+    var TOQUES = 3;
+    var PAUSA = 1400;
+    var conta = 0;
+    var ultimo = 0;
+    var lastFire = 0;
+
+    function toque(e) {
+      if (e && e.cancelable) e.preventDefault();
+      var agora = Date.now();
+      if (agora - lastFire < 90) return;
+      lastFire = agora;
+      conta = (agora - ultimo > PAUSA) ? 1 : conta + 1;
+      ultimo = agora;
+      if (conta < TOQUES) return;
+      conta = 0;
+      toggleDemoMode();
+    }
+
+    var alvos = document.querySelectorAll('.qs-home-logo, .qs-brand');
+    Array.prototype.forEach.call(alvos, function (el) {
+      el.addEventListener('click', toque);
+      el.addEventListener('touchend', toque, { passive: false });
+    });
+  })();
+
+  applyDemoUI();
+  if (demoMode) setJumpOpen(true);
+
+  document.addEventListener('keydown', function (e) {
+    if (!document.getElementById('tutorialModal').hidden && e.key === 'Escape') {
+      closeTutorial();
+      return;
+    }
+    if (e.key === 'Escape' && jumpOpen) {
+      setJumpOpen(false);
+      return;
+    }
+    if (mode === 'home') {
+      if (e.key === 'Enter') showMenu(0);
+      return;
+    }
+    if (e.key === 'ArrowRight') { sfx('click'); advance(); }
+    if (e.key === 'ArrowLeft') { sfx('click'); go(-1); }
+    if (e.key === 'Escape') {
+      if (mode === 'play') exitPlay();
+      else showHome();
+    }
+  });
+
+  var resume = loadResume();
+  if (resume && resume.page > 1) applyResume(resume);
+  else showHome();
+})();
+  </script>
+</body>
+</html>
