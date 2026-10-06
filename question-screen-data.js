@@ -198,36 +198,25 @@ window.QUESTION_SCREEN_SESSION = {
         {
           id: "nr11-m2-capa",
           type: "cover",
-          icon: "🚶",
+          image: "assets/fotos/capa-modulo2.png",
+          imageAlt: "Capa do módulo 2",
           title: "Módulo 2 — Condução, ergonomia e rampas",
           subtitle: "Velocidade de caminhada, empurrar em vez de puxar, proibições, trânsito interno e rampas."
         },
         {
           id: "nr11-m2-ritmo",
-          type: "content",
-          fit: true,
-          kicker: "Condução",
-          title: "Controle e visibilidade",
-          body: "A operação segura mantém o controle do equipamento e a visão da área à frente.",
-          cards: [
-            { icon: "🚶", title: "Velocidade", body: "Desloque no ritmo de uma pessoa caminhando normalmente. Corrida tira o controle." },
-            { icon: "🛑", title: "Parada suave", body: "Proibido parar brusco: pé na roda ou girar a manopla com violência derruba a carga." },
-            { icon: "👀", title: "Olhe o caminho", body: "Curva, piso molhado e pouca visibilidade pedem menos velocidade." }
-          ],
-          quote: "Se você não pararia andando, não pare com a paleteira."
+          type: "video",
+          kicker: "Vídeo",
+          title: "Ergonomia, Postura e Velocidade na Condução",
+          playerId: "panda-dfeea8fa-de56-4224-a82a-84d8a0402f92",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=dfeea8fa-de56-4224-a82a-84d8a0402f92"
         },
         {
           id: "nr11-m2-ergonomia",
-          type: "content",
-          fit: true,
-          kicker: "Ergonomia",
-          title: "Empurrar é melhor",
-          body: "A coluna agradece quando a força vai para a frente, com o corpo na frente da alavanca.",
-          compare: [
-            { ok: true, label: "Empurrar", text: "Preferir sempre empurrar a paleteira. O corpo fica à frente da alavanca de direção: mais visibilidade e mais controle." },
-            { ok: false, label: "Puxar o tempo todo", text: "Puxar torce a coluna e esconde o trajeto. Só use a ré quando a manobra exigir, e com o caminho de trás livre." }
-          ],
-          note: { label: "Ré", text: "Antes de puxar, confirme que o trajeto traseiro está totalmente livre e desobstruído." }
+          type: "video",
+          kicker: "Vídeo",
+          title: "Proibições Severas na Operação e Riscos por Distração",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=2921ef2d-b8c5-4d51-9cf4-d5137b40b5b2"
         },
         {
           id: "nr11-m2-proibicoes",
@@ -246,30 +235,19 @@ window.QUESTION_SCREEN_SESSION = {
         },
         {
           id: "nr11-m2-transito",
-          type: "content",
-          fit: true,
-          kicker: "Trânsito interno",
-          title: "Quem passa primeiro",
-          cards: [
-            { icon: "🚶", title: "Pedestre", body: "Preferência constante a quem está a pé. Evite conversões bruscas." },
-            { icon: "✋", title: "Cruzamento", body: "Pare em cruzamentos e conversões. Dê preferência a empilhadeiras e paleteiras carregadas." },
-            { icon: "↔️", title: "Corredor", body: "Dê passagem com atenção. Proibido costurar entre obstáculos." },
-            { icon: "💧", title: "Piso ruim", body: "Reduza em curvas, pouca visibilidade e pisos molhados, oleosos ou irregulares." }
-          ]
+          type: "video",
+          kicker: "Vídeo",
+          title: "Regras de Trânsito Interno e Circulação em Galpões",
+          playerId: "panda-83deb05a-af44-479d-9e3f-9675b916ff74",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=83deb05a-af44-479d-9e3f-9675b916ff74"
         },
         {
           id: "nr11-m2-rampas",
-          type: "content",
-          fit: true,
-          kicker: "Rampas",
+          type: "video",
+          kicker: "Vídeo",
           title: "Subida, descida e o que é proibido",
-          body: "Evite rampas sempre que houver outro caminho. Se não houver, a carga manda a direção.",
-          items: [
-            { n: "1", title: "Subir", text: "Inclinação com a carga voltada para a frente." },
-            { n: "2", title: "Descer", text: "Devagar, com a carga voltada para trás. Reduza a velocidade na descida." },
-            { n: "3", title: "Rodas", text: "Confira se as rodas agarram o solo e se estão limpas de óleo ou graxa." }
-          ],
-          note: { label: "Proibido na rampa", text: "Atravessar o declive na horizontal, fazer volta em rampa ou estacionar em superfície inclinada." }
+          playerId: "panda-e6ade649-b3f9-47bd-91c8-20282d6abe94",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=e6ade649-b3f9-47bd-91c8-20282d6abe94"
         },
         {
           id: "nr11-m2-desafio",
@@ -283,6 +261,8 @@ window.QUESTION_SCREEN_SESSION = {
           id: "nr11-m2-p1",
           type: "question",
           icon: "🚶",
+          image: "assets/fotos/m2i1.png",
+          imageAlt: "Operador em pé com a paleteira manual no corredor",
           question: "Qual é a forma ergonômica de conduzir a paleteira manual?",
           alternatives: [
             { id: "a", text: "Puxar o tempo todo, de costas para o caminho", correct: false },
@@ -297,6 +277,8 @@ window.QUESTION_SCREEN_SESSION = {
           id: "nr11-m2-p2",
           type: "question",
           icon: "⛰️",
+          image: "assets/fotos/m2i2.png",
+          imageAlt: "Operador conduzindo a paleteira com carga em uma rampa",
           question: "Como a carga deve ficar na rampa?",
           alternatives: [
             { id: "a", text: "Sempre de lado, para enxergar os dois sentidos", correct: false },
@@ -311,6 +293,8 @@ window.QUESTION_SCREEN_SESSION = {
           id: "nr11-m2-p3",
           type: "question",
           icon: "📱",
+          image: "assets/fotos/m2i3.png",
+          imageAlt: "Operador empurrando a paleteira com palete de caixas",
           question: "Qual conduta é permitida durante a condução?",
           alternatives: [
             { id: "a", text: "Falar ao celular com a paleteira em movimento", correct: false },
@@ -336,128 +320,116 @@ window.QUESTION_SCREEN_SESSION = {
         {
           id: "nr11-m3-capa",
           type: "cover",
-          icon: "📦",
+          image: "assets/fotos/capa-modulo3.png",
+          imageAlt: "Capa do módulo 3",
           title: "Módulo 3 — Cargas, paletes e estacionamento",
           subtitle: "Captação, amarração, altura do solo, paletes de 2 e 4 entradas, piso e onde estacionar."
         },
         {
           id: "nr11-m3-captacao",
-          type: "content",
-          fit: true,
-          kicker: "Carga",
-          title: "Antes de levantar",
-          items: [
-            { n: "1", title: "Peso e tamanho", text: "Confira peso e dimensões. Só movimente o que cabe na capacidade e no tamanho dos garfos." },
-            { n: "2", title: "De frente", text: "Aproxime-se de frente e enfie os garfos completamente sob o palete." },
-            { n: "3", title: "Estável", text: "Carga arrumada e filmada. Peça solta leva fitilho e/ou fita stretch." }
-          ],
-          note: { label: "Carga alta", text: "Redobre a atenção. Se precisar de ajudante, combine o trajeto antes de sair." }
+          type: "video",
+          kicker: "Vídeo",
+          title: "Captação, Estabilização e Altura da Carga",
+          playerId: "panda-613f3feb-8556-4cd4-88af-95ac0cd4ed00",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=613f3feb-8556-4cd4-88af-95ac0cd4ed00"
         },
         {
           id: "nr11-m3-altura",
-          type: "content",
-          fit: true,
-          kicker: "Transporte",
-          title: "Quanto a carga sobe",
-          body: "A hidráulica da paleteira manual só faz a elevação básica de transporte. Não é empilhadeira.",
-          stats: [
-            { num: "15 a 20 cm", label: "Altura da base da carga em piso regular" }
-          ],
-          cards: [
-            { icon: "⬆️", title: "Subir e baixar", body: "Use os comandos só para essa elevação de transporte, não para alcançar prateleira." },
-            { icon: "📦", title: "Carga a granel", body: "Material em grande quantidade, sem embalagem, contido só pela carroceria. Não é o caso típico do palete." }
-          ],
-          quote: "No piso regular, a base da carga fica de 15 a 20 cm do solo."
+          type: "video",
+          kicker: "Vídeo",
+          title: "Regras de Armazenamento e Limites Estruturais do Piso",
+          playerId: "panda-0acc37f0-8d41-4789-97d6-9605e041c175",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=0acc37f0-8d41-4789-97d6-9605e041c175"
         },
         {
           id: "nr11-m3-paletes",
           type: "content",
           fit: true,
+          layout: "duo",
           kicker: "Paletes",
           title: "Duas entradas ou quatro",
           body: "O palete é o apoio: uma estrutura com aberturas para os garfos. A entrada muda a manobra.",
           compare: [
-            { ok: false, label: "Duas entradas", text: "Aberturas em lados opostos. A paleteira só entra por esses lados, e a manobra fica limitada." },
-            { ok: true, label: "Quatro entradas", text: "Aberturas nos quatro lados. Os garfos entram em qualquer direção e a manobra em corredor estreito fica mais fácil." }
+            { ok: false, label: "Duas entradas", image: "assets/fotos/PALLET%202.png", imageAlt: "Palete de duas entradas", text: "Aberturas em lados opostos. A paleteira só entra por esses lados, e a manobra fica limitada." },
+            { ok: true, label: "Quatro entradas", image: "assets/fotos/PALLET%204.webp", imageAlt: "Palete de quatro entradas", text: "Aberturas nos quatro lados. Os garfos entram em qualquer direção e a manobra no corredor estreito fica mais fácil." }
           ],
           note: { label: "Vazio", text: "No máximo 10 paletes sobrepostos para movimentar sem carga." }
         },
         {
           id: "nr11-m3-piso",
-          type: "content",
-          fit: true,
-          kicker: "Armazenamento",
-          title: "O piso também tem limite",
-          cards: [
-            { icon: "🏗️", title: "Capacidade do pavimento", body: "O peso armazenado nunca pode passar da capacidade calculada para aquele piso." },
-            { icon: "🧱", title: "Afastado da parede", body: "Material empilhado não encosta na parede." },
-            { icon: "↔️", title: "50 cm livres", body: "Deixe pelo menos 50 cm livres nos corredores de circulação." }
-          ]
+          type: "video",
+          kicker: "Vídeo",
+          title: "Estacionamento Seguro e Desobstrução de Emergências",
+          playerId: "panda-6891e9bf-1d28-4e12-abe6-1a2907a85962",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=6891e9bf-1d28-4e12-abe6-1a2907a85962"
         },
         {
           id: "nr11-m3-estacionar",
           type: "content",
           fit: true,
+          layout: "spots",
           kicker: "Estacionamento",
           title: "Onde a paleteira pode parar",
           body: "Estacione só em local permitido e disponível. O resto do galpão não é vaga.",
           items: [
-            { icon: "🚫", text: "Saída de emergência." },
-            { icon: "🚫", text: "Hidrante e extintor de incêndio." },
-            { icon: "🚫", text: "Painel elétrico." },
-            { icon: "🚫", text: "Via de pedestre, rua de acesso ou prateleira." }
+            { icon: "🚪", title: "Saída", text: "Emergência e rota de fuga ficam livres." },
+            { icon: "🧯", title: "Incêndio", text: "Hidrante e extintor sem nada na frente." },
+            { icon: "⚡", title: "Energia", text: "Painel elétrico com acesso livre." },
+            { icon: "🚶", title: "Circulação", text: "Via de pedestre, rua e prateleira desobstruídas." }
           ],
           quote: "Se alguém precisa passar ou combater um incêndio, a paleteira não pode estar no caminho."
         },
         {
           id: "nr11-m3-desafio",
           type: "quiz-intro",
-          title: "Desafio NR-11 — Módulo 3",
-          count: 3,
-          minCorrect: 2,
-          icon: "🎮"
+          title: "Verdadeiro ou falso",
+          body: "Uma frase por vez. Toque em <strong>Verdadeiro</strong> ou <strong>Falso</strong>. São 6 frases da carga, do palete, do piso e do estacionamento. Acerte pelo menos <strong>4</strong>.",
+          count: 6,
+          minCorrect: 4,
+          icon: "✅"
         },
         {
-          id: "nr11-m3-p1",
-          type: "question",
-          icon: "📏",
-          question: "Em piso regular, a que altura do solo a base da carga deve ficar?",
-          alternatives: [
-            { id: "a", text: "Rente ao chão, com os garfos abaixados o tempo todo", correct: false },
-            { id: "b", text: "De 15 a 20 cm", correct: true },
-            { id: "c", text: "Na altura do peito, para ver por baixo", correct: false },
-            { id: "d", text: "O mais alto que a hidráulica permitir", correct: false }
-          ],
-          explanation: "No transporte em terreno regular, a base inferior da carga fica de 15 a 20 cm do solo.",
-          review: "A altura de transporte"
-        },
-        {
-          id: "nr11-m3-p2",
-          type: "question",
-          icon: "🪵",
-          question: "Qual palete facilita a manobra em corredor estreito?",
-          alternatives: [
-            { id: "a", text: "O de duas entradas, porque só tem um caminho", correct: false },
-            { id: "b", text: "O de quatro entradas, porque os garfos entram por qualquer lado", correct: true },
-            { id: "c", text: "Qualquer palete, desde que esteja molhado", correct: false },
-            { id: "d", text: "Palete sem abertura, apoiado só nas pontas dos garfos", correct: false }
-          ],
-          explanation: "Quatro entradas permitem inserir os garfos em qualquer direção. Duas entradas limitam o acesso.",
-          review: "Palete de quatro entradas"
-        },
-        {
-          id: "nr11-m3-p3",
-          type: "question",
-          icon: "🚒",
-          question: "Onde é proibido estacionar a paleteira?",
-          alternatives: [
-            { id: "a", text: "Na vaga demarcada e disponível", correct: false },
-            { id: "b", text: "Na frente de hidrante, extintor, saída de emergência ou painel elétrico", correct: true },
-            { id: "c", text: "Ao lado de outra paleteira, na área de estacionamento", correct: false },
-            { id: "d", text: "No ponto combinado com a chefia, fora da circulação", correct: false }
-          ],
-          explanation: "Emergência, combate a incêndio, painel elétrico, pedestre e acesso não são vaga.",
-          review: "O estacionamento seguro"
+          id: "nr11-m3-vf",
+          type: "sort",
+          title: "Verdadeiro ou falso",
+          body: "Uma frase por vez. Toque no botão certo.",
+          time: 75,
+          minCorrect: 4,
+          review: "Altura da carga, palete, piso e estacionamento",
+          left: { id: "falso", label: "Falso", icon: "✕" },
+          right: { id: "verdadeiro", label: "Verdadeiro", icon: "✓" },
+          items: [
+            {
+              text: "No piso regular, a base da carga fica a 15–20 cm do solo.",
+              bin: "verdadeiro",
+              hint: "Verdade. Essa é a altura de transporte."
+            },
+            {
+              text: "Peça solta pode seguir sem fitilho nem fita stretch.",
+              bin: "falso",
+              hint: "Falso. Peça solta precisa de amarração."
+            },
+            {
+              text: "Paletes de madeira vazios: no máximo 10 empilhados.",
+              bin: "verdadeiro",
+              hint: "Verdade. O limite é de 10 paletes vazios."
+            },
+            {
+              text: "O palete de duas entradas abre nos quatro lados.",
+              bin: "falso",
+              hint: "Falso. Duas entradas só abrem em lados opostos."
+            },
+            {
+              text: "No corredor, deixe pelo menos 50 cm livres.",
+              bin: "verdadeiro",
+              hint: "Verdade. Esse espaço livre é obrigatório."
+            },
+            {
+              text: "Pode estacionar na frente da saída de emergência.",
+              bin: "falso",
+              hint: "Falso. Saída, hidrante e extintor ficam livres."
+            }
+          ]
         }
       ]
     },

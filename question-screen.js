@@ -389,8 +389,12 @@
     if (Array.isArray(data.compare) && data.compare.length) {
       html += `<div class="qs-compare">${data.compare.map(function (c) {
         var ok = !!c.ok;
-        return `<article class="qs-compare-col ${ok ? 'is-ok' : 'is-bad'}">
+        var img = c.image
+          ? `<div class="qs-compare-media"><img class="qs-compare-img" src="${esc(c.image)}" alt="${esc(c.imageAlt || c.label || '')}" loading="eager" decoding="async"></div>`
+          : '';
+        return `<article class="qs-compare-col ${ok ? 'is-ok' : 'is-bad'}${c.image ? ' has-img' : ''}">
           <div class="qs-compare-lbl">${esc(c.label || (ok ? '✓ Correto' : '✕ Evitar'))}</div>
+          ${img}
           <p>${esc(c.text || c.body || '')}</p>
         </article>`;
       }).join('')}</div>`;
@@ -712,8 +716,9 @@
     var dense = (data.items && data.items.length > 6) || (data.cards && data.cards.length > 3) || (data.images && data.images.length > 1);
     var hasGallery = !!(data.images && data.images.length);
     var fit = !!data.fit;
+    var look = (data.layout === 'spots' || data.layout === 'duo') ? (' is-' + data.layout) : '';
     return `
-      <article class="qs-screen is-content is-text${dense ? ' is-dense' : ''}${hasGallery ? ' is-gallery' : ''}${fit ? ' is-fit' : ''}" data-qs-root data-type="content">
+      <article class="qs-screen is-content is-text${dense ? ' is-dense' : ''}${hasGallery ? ' is-gallery' : ''}${fit ? ' is-fit' : ''}${look}" data-qs-root data-type="content">
         <div class="qs-panel qs-panel-text">
           ${head}
         </div>
@@ -973,6 +978,10 @@
       ? (passed
         ? ('Você acertou <strong>' + hits + '</strong> de <strong>' + total + '</strong> situações.')
         : ('Você acertou <strong>' + hits + '</strong> de <strong>' + total + '</strong>. É necessário acertar pelo menos <strong>' + min + '</strong>. Revise o módulo e tente de novo.'))
+      : data.mode === 'match'
+      ? (passed
+        ? ('Você fechou os <strong>' + total + '</strong> pares.')
+        : ('Faltam pares. Feche os <strong>' + total + '</strong> para avançar.'))
       : (passed
         ? ('Você acertou <strong>' + hits + '</strong> de <strong>' + total + '</strong> questões.')
         : ('Você acertou <strong>' + hits + '</strong> de <strong>' + total + '</strong>. É necessário acertar pelo menos <strong>' + min + '</strong>. Estude e tente novamente.')));
