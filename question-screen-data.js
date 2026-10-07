@@ -446,7 +446,8 @@ window.QUESTION_SCREEN_SESSION = {
         {
           id: "nr11-m4-capa",
           type: "cover",
-          icon: "⛑️",
+          image: "assets/fotos/capa-modulo4.png",
+          imageAlt: "Capa do módulo 4",
           title: "Módulo 4 — Riscos, EPIs e emergência",
           subtitle: "Palete mal alinhado, manutenção, equipamentos de proteção e o que fazer no incêndio."
         },
@@ -464,43 +465,27 @@ window.QUESTION_SCREEN_SESSION = {
         },
         {
           id: "nr11-m4-outros",
-          type: "content",
-          fit: true,
-          kicker: "Risco",
-          title: "Outros perigos na movimentação",
-          cards: [
-            { icon: "👁️", title: "Carga alta", body: "Tira a visão do trajeto. Sem visibilidade, pare e peça ajuda. Não avance no escuro." },
-            { icon: "🛢️", title: "Piso traiçoeiro", body: "Molhado, oleoso ou com desnível aumenta a derrapagem. Reduza e confira as rodas." },
-            { icon: "📢", title: "Anomalia", body: "Vazamento, ruído ou folga: pare, não force e avise a chefia ou a manutenção na hora." }
-          ]
+          type: "video",
+          kicker: "Vídeo",
+          title: "Manutenção do Equipamento e Comunicação de Avarias",
+          playerId: "panda-603b1fdb-6204-4bc5-90ea-df90d2ff44bd",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=603b1fdb-6204-4bc5-90ea-df90d2ff44bd"
         },
         {
           id: "nr11-m4-manutencao",
-          type: "content",
-          fit: true,
-          kicker: "Manutenção",
-          title: "Operador não conserta",
-          body: "Sem treinamento específico de manutenção, mexer na paleteira é proibido.",
-          cards: [
-            { icon: "🚫", title: "Não repare", body: "Não tente consertar hidráulica, roda ou estrutura por conta própria." },
-            { icon: "📣", title: "Informe", body: "Qualquer ocorrência, anomalia ou vazamento vai imediatamente à chefia ou à manutenção." },
-            { icon: "🔒", title: "Fora de uso", body: "Equipamento com defeito permanece interditado até a liberação de quem é responsável." }
-          ],
-          quote: "Conserto caseiro vira o próximo acidente."
+          type: "video",
+          kicker: "Vídeo",
+          title: "Equipamentos de Proteção Individual (EPIs) Obrigatórios",
+          playerId: "panda-a23b1184-73a5-41f8-af65-258842e0f049",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=a23b1184-73a5-41f8-af65-258842e0f049"
         },
         {
-          id: "nr11-m4-epi",
-          type: "content",
-          fit: true,
-          kicker: "EPI",
-          title: "Proteção o turno inteiro",
-          body: "A empresa fornece, orienta, treina e exige. O operador usa do início ao fim da jornada.",
-          cards: [
-            { icon: "👢", title: "Botina", body: "Botina de segurança com biqueira." },
-            { icon: "🧤", title: "Luvas", body: "Luvas tricotadas de segurança e luvas de vaqueta ou raspa, conforme a tarefa." },
-            { icon: "⛑️", title: "Capacete", body: "Capacete de segurança com jugular ajustada." }
-          ],
-          note: { label: "Durante a operação", text: "EPI no armário não protege. Capacete sem jugular não conta como usado." }
+          id: "nr11-m4-emergencia",
+          type: "video",
+          kicker: "Vídeo",
+          title: "Procedimentos de Emergência e Combate a Incêndios",
+          playerId: "panda-24489907-3d57-44ef-ad62-d74fb1947a5c",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=24489907-3d57-44ef-ad62-d74fb1947a5c"
         },
         {
           id: "nr11-m4-incendio",
@@ -526,48 +511,55 @@ window.QUESTION_SCREEN_SESSION = {
         {
           id: "nr11-m4-p1",
           type: "question",
-          icon: "⚠️",
-          question: "Por que o palete mal alinhado e longe da base é perigoso?",
+          icon: "📦",
+          image: "assets/fotos/m4p1.png",
+          imageAlt: "Palete desalinhado sobre a paleteira, com caixas prestes a tombar",
+          question: "O que acontece se os garfos não entram até a base do palete?",
           alternatives: [
-            { id: "a", text: "Só atrasa a entrega, sem risco de queda", correct: false },
-            { id: "b", text: "Desequilibra a carga e pode derrubá-la", correct: true },
-            { id: "c", text: "É o jeito certo de entrar em corredor estreito", correct: false },
-            { id: "d", text: "Aumenta a capacidade para mais de 2.500 kg", correct: false }
+            { id: "a", text: "A carga fica mais estável, porque sobra espaço", correct: false },
+            { id: "b", text: "O palete pode desequilibrar e tombar", correct: true },
+            { id: "c", text: "Só reduz a velocidade, sem risco de queda", correct: false },
+            { id: "d", text: "A paleteira trava sozinha e avisa o operador", correct: false }
           ],
-          explanation: "A folga nos garfos tira o apoio. A carga fica em balanço e a queda é iminente.",
-          review: "O risco do palete mal alinhado"
+          explanation: "Garfo que não entra até o fim deixa folga. A carga desequilibra e o palete pode tombar.",
+          review: "O encaixe dos garfos"
         },
         {
           id: "nr11-m4-p2",
           type: "question",
-          icon: "🔧",
-          question: "A paleteira começa a vazar óleo. O que o operador faz?",
+          icon: "🦺",
+          image: "assets/fotos/m4p2.png",
+          imageAlt: "Operador de capacete, colete e botina conduzindo a paleteira com carga estável",
+          question: "Qual EPI vale o turno inteiro na operação da paleteira?",
           alternatives: [
-            { id: "a", text: "Aperta a conexão e termina as entregas", correct: false },
-            { id: "b", text: "Para, interdita e informa a chefia ou a manutenção", correct: true },
-            { id: "c", text: "Limpa o óleo e segue, se a carga for baixa", correct: false },
-            { id: "d", text: "Pede para outro operador usar o mesmo equipamento", correct: false }
+            { id: "a", text: "Só luvas de malha, sem botina", correct: false },
+            { id: "b", text: "Botina com biqueira, capacete com jugular e luvas", correct: true },
+            { id: "c", text: "Capacete sem jugular e sandália", correct: false },
+            { id: "d", text: "Avental e óculos escuros", correct: false }
           ],
-          explanation: "Operador não faz manutenção. Anomalia ou vazamento é comunicação imediata e equipamento fora de uso.",
-          review: "A proibição de conserto"
+          explanation: "A empresa fornece e exige botina com biqueira, capacete com jugular e luvas durante todo o turno. Material pesado ou abrasivo pede luva de raspa.",
+          review: "Os EPIs obrigatórios"
         },
         {
           id: "nr11-m4-p3",
           type: "question",
-          icon: "🔥",
-          question: "O alarme de incêndio dispara enquanto você conduz. Qual é a primeira sequência?",
+          icon: "🚨",
+          image: "assets/fotos/m4p3.png",
+          imageAlt: "Alarme de incêndio aceso no corredor, com o operador ao lado da paleteira",
+          question: "Ao ouvir o alarme de incêndio, qual é a conduta correta?",
           alternatives: [
-            { id: "a", text: "Terminar a entrega e só então sair", correct: false },
-            { id: "b", text: "Estacionar em local seguro, baixar a carga e liberar a passagem", correct: true },
-            { id: "c", text: "Abandonar a paleteira no meio do corredor, com a carga elevada", correct: false },
-            { id: "d", text: "Subir na carga para enxergar de onde vem o alarme", correct: false }
+            { id: "a", text: "Deixar a paleteira no corredor com a carga alta", correct: false },
+            { id: "b", text: "Estacionar em local seguro, baixar a carga e chamar a brigada", correct: true },
+            { id: "c", text: "Qualquer pessoa começa o combate com o extintor", correct: false },
+            { id: "d", text: "Empurrar a carga até a saída de emergência", correct: false }
           ],
-          explanation: "Estacione em local seguro, baixe a carga e garanta a passagem. Combate com extintor é para brigadista treinado.",
-          review: "A conduta no alarme de incêndio"
+          explanation: "Estacione em local seguro, baixe a carga e deixe a saída livre. Só o brigadista treinado inicia o combate, com pó químico ou CO2.",
+          review: "O alarme de incêndio"
         },
         {
           id: "nr11-m4-final",
           type: "finale",
+          image: "assets/fotos/capafinal.png",
           kicker: "Conclusão",
           eyebrow: "Treinamento concluído",
           title: "Parabéns",

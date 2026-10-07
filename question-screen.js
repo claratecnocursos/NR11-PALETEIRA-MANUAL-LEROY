@@ -972,8 +972,8 @@
     var hasTitle = !!(passed && unlock && unlock.title);
     var desc = data.body || (data.mode === 'order'
       ? (passed
-        ? 'Você montou o fluxo na ordem certa.'
-        : 'Toque os 4 passos na ordem: aviso, gestor, SESMT e Moki.')
+        ? 'Você montou a ordem certa.'
+        : 'A ordem ainda não fechou. Tente de novo: EPI, carga, avaria e alarme.')
       : data.mode === 'sort'
       ? (passed
         ? ('Você acertou <strong>' + hits + '</strong> de <strong>' + total + '</strong> situações.')
