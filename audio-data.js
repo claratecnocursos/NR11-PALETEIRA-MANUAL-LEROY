@@ -50,7 +50,23 @@ function ttsSpeak(text) {
   t = t.replace(/\b850\s*mm\b/gi, 'oitocentos e cinquenta milímetros');
   t = t.replace(/\b120\s*mm\b/gi, 'cento e vinte milímetros');
   t = t.replace(/\b80\s*mm\b/gi, 'oitenta milímetros');
+  t = t.replace(/\b80\s*milímetros\b/gi, 'oitenta milímetros');
   t = t.replace(/\b200\s*mm\b/gi, 'duzentos milímetros');
+  t = t.replace(/\b200\s*milímetros\b/gi, 'duzentos milímetros');
+  t = t.replace(/\b165\s*milímetros\b/gi, 'cento e sessenta e cinco milímetros');
+  t = t.replace(/\b1\.220\s*milímetros\b/gi, 'mil duzentos e vinte milímetros');
+  t = t.replace(/\b1\.670\s*milímetros\b/gi, 'mil seiscentos e setenta milímetros');
+  t = t.replace(/\b2\.500\s*quilos\b/gi, 'dois mil e quinhentos quilos');
+  t = t.replace(/\b11\.1\.3\.2\b/g, 'onze ponto um ponto três ponto dois');
+  t = t.replace(/\b11\.1\.5\b/g, 'onze ponto um ponto cinco');
+  t = t.replace(/\b11\.1\b/g, 'onze ponto um');
+  t = t.replace(/\b6 de 8\b/g, 'seis de oito');
+  t = t.replace(/\b1 de 8\b/g, 'um de oito');
+  t = t.replace(/\b1 de 6\b/g, 'um de seis');
+  t = t.replace(/\b6 frases\b/gi, 'seis frases');
+  t = t.replace(/\bpelo menos 4\b/gi, 'pelo menos quatro');
+  t = t.replace(/\b10 paletes\b/gi, 'dez paletes');
+  t = t.replace(/\b2 e 4\b/g, 'dois e quatro');
   t = t.replace(/\b50\s*[×xX]\s*50\s*cm\b/gi, 'cinquenta por cinquenta centímetros');
   t = t.replace(/\b60\s*[×xX]\s*60\s*cm\b/gi, 'sessenta por sessenta centímetros');
   t = t.replace(/\b60\s*a\s*100\s*cm\b/gi, 'sessenta a cem centímetros');
@@ -69,6 +85,7 @@ function ttsSpeak(text) {
   t = t.replace(/\bIEC\s*60204-1\b/gi, 'I E C sessenta mil duzentos e quatro hífen um');
   t = t.replace(/\bNBR\s*14153\b/gi, 'N B R quatorze mil cento e cinquenta e três');
   t = t.replace(/\bABNT\b/g, 'A B N T');
+  t = t.replace(/\b3 perguntas\b/gi, 'três perguntas');
   t = t.replace(/\b4 perguntas\b/gi, 'quatro perguntas');
   t = t.replace(/\b5 casos\b/gi, 'cinco casos');
   t = t.replace(/\b5 perguntas\b/gi, 'cinco perguntas');
@@ -118,12 +135,17 @@ function loadSession() {
 function catalogEntries(session) {
   const entries = [
     { id: T.HOME_KEY, title: 'Abertura' },
-    { id: T.menuAudioKey(1), title: 'Menu, módulo 1' },
-    { id: T.menuAudioKey(2), title: 'Menu, módulo 2' },
-    { id: T.menuAudioKey(3), title: 'Menu, módulo 3' },
-    { id: T.menuAudioKey(4), title: 'Menu, módulo 4' },
-    { id: T.menuAudioKey(0), title: 'Menu, concluído' }
+    { id: 'menu-nr11-done', title: 'Menu, concluído' }
   ];
+  [1, 2, 3, 4].forEach(function (n) {
+    var variants = n === 1 ? ['start', 'review', 'done-first'] : ['start', 'review', 'done'];
+    variants.forEach(function (variant) {
+      entries.push({
+        id: T.menuAudioKey(n, variant),
+        title: 'Menu, módulo ' + n + ', ' + variant
+      });
+    });
+  });
   (session.modules || []).forEach((mod) => {
     (mod.screens || []).forEach((screen) => {
       if (screen && screen.id) {
@@ -140,9 +162,9 @@ function catalogEntries(session) {
 
 function fallbackText(session, entry) {
   if (entry.id === T.HOME_KEY) return T.buildHomeText();
-  if (entry.id === T.menuAudioKey(0) || entry.id === 'menu-nr01-done') return T.buildMenuText(session, 0);
-  const menuMatch = /^menu-nr01-(\d+)$/.exec(entry.id);
-  if (menuMatch) return T.buildMenuText(session, Number(menuMatch[1]));
+  if (entry.id === 'menu-nr11-done' || entry.id === 'menu-nr01-done') return T.buildMenuText(session, 0);
+  var menuMatch = /^menu-nr11-(\d+)-(done-first|start|review|done)$/.exec(entry.id);
+  if (menuMatch && T.buildMenuCardText) return T.buildMenuCardText(session, Number(menuMatch[1]), menuMatch[2]);
   if (entry.screen) return T.buildScreenText(entry.screen);
   return '';
 }

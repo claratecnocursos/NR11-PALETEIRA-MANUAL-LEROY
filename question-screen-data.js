@@ -453,15 +453,11 @@ window.QUESTION_SCREEN_SESSION = {
         },
         {
           id: "nr11-m4-alinhamento",
-          type: "content",
-          fit: true,
-          kicker: "Risco",
-          title: "Palete mal alinhado derruba carga",
-          body: "Garfo que não entra até o fim deixa o palete longe da base da paleteira. A carga fica em balanço.",
-          compare: [
-            { ok: true, label: "Certo", text: "Garfos completamente sob o palete, carga centrada e estável, perto da base do equipamento." },
-            { ok: false, label: "Errado", text: "Palete mal alinhado e distante da base. A folga nos garfos desequilibra e a queda da carga é iminente." }
-          ]
+          type: "video",
+          kicker: "Vídeo",
+          title: "Riscos Operacionais e Alinhamento Incorreto da Carga",
+          playerId: "panda-eec3f7eb-ecf6-466f-a8fc-5d167fc3f1c0",
+          embed: "https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=eec3f7eb-ecf6-466f-a8fc-5d167fc3f1c0"
         },
         {
           id: "nr11-m4-outros",

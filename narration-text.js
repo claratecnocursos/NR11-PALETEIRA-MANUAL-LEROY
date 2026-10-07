@@ -19,7 +19,8 @@
     'Segurança do Trabalho.',
     'N R onze, Operação de Paleteira Manual.',
     'Norma, habilitação, condução segura, cargas, E P Is e emergência.',
-    'Quatro módulos completos. Treinamento cem por cento online.'
+    'Quatro módulos completos. Treinamento cem por cento online.',
+    'Toque em iniciar o treinamento.'
   ].join(' ');
 
   function stripHtml(value) {
@@ -110,7 +111,7 @@
     if (screen.body) parts.push(sentence(screen.body));
 
     list(screen.stats).forEach(function (s) {
-      parts.push(sentence(joinParts([clean(s.num), clean(s.label)])));
+      parts.push(labelled(s.num, s.label));
     });
     list(screen.cards).forEach(function (c) {
       parts.push(labelled(c.title, c.body));
@@ -152,6 +153,10 @@
         : sentence(screen.note));
     }
 
+    list(screen.chips).forEach(function (c) {
+      parts.push(sentence(c));
+    });
+
     return parts;
   }
 
@@ -175,6 +180,7 @@
     if (screen.type === 'video') {
       parts.push((clean(screen.kicker) || 'Vídeo') + '.');
       if (screen.title) parts.push(clean(screen.title) + '.');
+      parts.push('Assista ao vídeo para avançar.');
       return joinParts(parts);
     }
 
@@ -193,6 +199,12 @@
     if (screen.type === 'order' || screen.type === 'match' || screen.type === 'sort') {
       if (screen.title) parts.push(clean(screen.title) + '.');
       if (screen.body) parts.push(clean(stripHtml(screen.body)));
+      if (screen.type === 'sort') {
+        var total = list(screen.items).length;
+        if (total) parts.push('Caso 1 de ' + total + '.');
+        if (screen.left && screen.left.label) parts.push(clean(screen.left.label) + '.');
+        if (screen.right && screen.right.label) parts.push(clean(screen.right.label) + '.');
+      }
       return joinParts(parts);
     }
 
@@ -227,8 +239,28 @@
 
   // o menu tem uma gravação por situação: qual módulo está liberado agora.
   // 0 significa que todos já foram concluídos.
-  function menuAudioKey(nextModule) {
-    return 'menu-nr11-' + (nextModule ? nextModule : 'done');
+  function menuAudioKey(nextModule, variant) {
+    if (!nextModule) return 'menu-nr11-done';
+    return 'menu-nr11-' + nextModule + '-' + (variant || 'start');
+  }
+
+  function buildMenuCardText(session, moduleId, variant) {
+    var mods = (session && session.modules) || [];
+    var nums = ['', 'um', 'dois', 'três', 'quatro'];
+    var m = null;
+    mods.forEach(function (mod) { if (mod.id === moduleId) m = mod; });
+    var n = nums[moduleId] || String(moduleId);
+    var total = nums[mods.length] || String(mods.length);
+    var finished = variant === 'done' || variant === 'done-first';
+    var parts = ['N R onze, Operação de Paleteira Manual.'];
+    if (finished) parts.push('Você finalizou os módulos. Toque para revisar o Módulo ' + n + '.');
+    else parts.push('Um módulo por vez. Ao concluir, o próximo é liberado.');
+    parts.push(variant === 'done-first' ? 'Treinamento concluído.' : 'Você está aqui.');
+    parts.push('Módulo ' + n + ' de ' + total + '.');
+    if (m && m.title) parts.push(clean(m.title) + '.');
+    if (m && m.objective) parts.push(clean(m.objective));
+    parts.push(variant === 'start' ? 'Iniciar módulo.' : 'Revisar módulo.');
+    return parts.join(' ').replace(/\s+/g, ' ').trim();
   }
 
   function buildMenuText(session, nextModule) {
@@ -262,6 +294,7 @@
     buildScreenText: buildScreenText,
     buildHomeText: buildHomeText,
     menuAudioKey: menuAudioKey,
+    buildMenuCardText: buildMenuCardText,
     buildMenuText: buildMenuText,
     audioFileName: audioFileName
   };

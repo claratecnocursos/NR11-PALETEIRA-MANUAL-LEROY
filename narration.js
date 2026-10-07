@@ -19,7 +19,7 @@
 
   var CONFIG = {
     audioDir: 'audios/',
-    audioVer: 'nr01-7',
+    audioVer: 'nr11-2',
 
     // espera curta: vários eventos juntos viram uma chamada só
     debounceMs: 300,
@@ -51,7 +51,7 @@
     var st = readState();
     if (!st) return '';
     if (st.mode === 'home') return T.HOME_KEY;
-    if (st.mode === 'menu') return T.menuAudioKey(st.nextModule);
+    if (st.mode === 'menu') return T.menuAudioKey(st.nextModule, st.menuVariant);
     return (st.screen && st.screen.id) || '';
   }
 

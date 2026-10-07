@@ -6,7 +6,7 @@
   <meta name="referrer" content="no-referrer">
   <title>NR-11 — Operação de Paleteira Manual</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="question-screen.css?v=leroy-redyellow10">
+  <link rel="stylesheet" href="question-screen.css?v=leroy-redyellow11">
   <style>
     html, body { margin: 0; height: 100%; overflow: hidden; }
   </style>
@@ -166,11 +166,10 @@
 
   <audio id="bg-music" loop preload="metadata" aria-hidden="true"></audio>
 
-  <script src="question-screen-data.js?v=nr11-41"></script>
+  <script src="question-screen-data.js?v=nr11-42"></script>
   <script src="question-screen.js?v=nr11-8"></script>
-  <script src="audios/audio-manifest.js?v=nr01-7"></script>
-  <script src="narration-text.js?v=nr11-1"></script>
-  <script src="narration.js?v=nr01-7"></script>
+  <script src="narration-text.js?v=nr11-4"></script>
+  <script src="narration.js?v=nr11-2"></script>
   <script>
 (function () {
   var session = window.QUESTION_SCREEN_SESSION;
@@ -481,6 +480,15 @@
       progress.unlockedUpTo = Math.max(progress.unlockedUpTo, modIndex + 1);
     }
     saveResume();
+  }
+
+  function menuNarrationVariant() {
+    var i = menuFocus;
+    if (i < 0 || !modules[i]) return 'done';
+    var allDone = modules.every(function (_, idx) { return isCompleted(idx); });
+    if (allDone) return i === 0 ? 'done-first' : 'done';
+    if (isCompleted(i)) return 'review';
+    return 'start';
   }
 
   // módulo visível no menu; 0 quando a trilha já acabou
@@ -1312,7 +1320,8 @@
         return {
           mode: mode,
           screen: mode === 'play' ? current() : null,
-          nextModule: mode === 'menu' ? nextModuleNumber() : 0
+          nextModule: mode === 'menu' ? nextModuleNumber() : 0,
+          menuVariant: mode === 'menu' ? menuNarrationVariant() : ''
         };
       }
     });
